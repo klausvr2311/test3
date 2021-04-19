@@ -1,0 +1,110 @@
+<h2 class="content-block">Post Sản phẩm</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1-12"[ngStyle]="{'display': 'flex'}">
+      <div class="form-group">
+        <label for="">CategoryID</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id=""
+          aria-describedby="helpId"
+          placeholder=""
+          #id
+        />
+        <label for="">CategoryName</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id=""
+          aria-describedby="helpId"
+          placeholder=""
+          #name
+        /><br /><br />
+        <label for="">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id=""
+          aria-describedby="helpId"
+          placeholder=""
+          #description
+        /><br /><br />
+        <label for="">Picture</label><br /><br />
+        <input
+          ng-model="file"
+          type="file"
+          #picture
+          (click)="getPicture(picture.value)"
+        /><br /><br /><img [src]="imageURL" alt="" />
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="
+            postApiCategories(
+              id.value,
+              name.value,
+              description.value,
+              picture.value
+            )
+          "
+        >
+          Post Category
+        </button>
+        <br /><br />
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="
+            putApiCategories(
+              id.value,
+              name.value,
+              description.value,
+              picture.value
+            )
+          "
+        >
+          Put Category
+        </button>
+        <br /><br />
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="deleteApiCategories(id.value)"
+        >
+          Delete Category
+        </button>
+        <br /><br />
+      </div>
+      <div class="container" >
+
+
+      <table class="table table-striped table-inverse table-responsive" >
+        <thead class="thead-inverse">
+          <tr>
+            <th>CategoryID</th>
+            <th>CategoryName</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cate">
+              <td scope="row">{{item.categoryId}}</td>
+              <td>{{item.categoryName | uppercase}}</td>
+              <td>{{item.description}}</td>
+            </tr>
+            <tr>
+              <td scope="row"></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>
